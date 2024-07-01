@@ -21,7 +21,7 @@ import os
 from habanero import Crossref
 
 logger = logging.getLogger(__name__)
-
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ua = UserAgent()
 
 USER_AGENTS = [
@@ -36,8 +36,10 @@ def about(request):
     return render(request, 'about.html')
 
 def fetch_impact_factor(publication):
-    main_journal_path = 'D:/Codes Vista/Django/Django/MAIN/impact_factor/MainOpenAccessJournalsData.xlsx'
-    raw_journal_path = 'D:/Codes Vista/Django/Django/MAIN/impact_factor/OpenAccessJournalsDataRaw.xlsx'
+    # main_journal_path = 'D:/Codes Vista/Django/Django/MAIN/impact_factor/MainOpenAccessJournalsData.xlsx'
+    # raw_journal_path = 'D:/Codes Vista/Django/Django/MAIN/impact_factor/OpenAccessJournalsDataRaw.xlsx'
+    main_journal_path = os.path.join(BASE_DIR, 'impact_factor', 'MainOpenAccessJournalsData.xlsx')
+    raw_journal_path = os.path.join(BASE_DIR, 'impact_factor', 'OpenAccessJournalsDataRaw.xlsx')
 
     impact_factor = 'No impact factor found'
 
@@ -322,7 +324,8 @@ def recommendations(request):
                     })
                 
                 # Load the CSV file
-                csv_file_path = r'D:\Codes Vista\Django\Django\MAIN\impact_factor\data.csv'
+                # csv_file_path = r'D:\Codes Vista\Django\Django\MAIN\impact_factor\data.csv'
+                csv_file_path = os.path.join(BASE_DIR, 'impact_factor', 'data.csv')
                 df = pd.read_csv(csv_file_path)
 
                 for paper in papers_data:
