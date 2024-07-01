@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="input-box">
+    <form method="post" action="{% url 'recommendations' %}" id="search_form">
+        {% csrf_token %}
+        <i class="uil uil-search"></i>
+        <input type="text" name="search_text" placeholder="Search here..." />
+        <button type="submit" class="button">Search</button>
+    </form>
+</div>
+
+<div id="results_container">
+    <!-- Results will be dynamically inserted here -->
+</div>
+
+<div id="response_time_container">
+    <!-- Response time will be displayed here -->
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('search_form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        var search_text = document.querySelector('input[name="search_text"]').value;
+
+        // Send a POST request using AJAX
+        $.ajax({
+            type: 'POST',
+            url: '{% url "recommendations" %}',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}' // Include the CSRF token in the request headers
+            },
+            data: {
+                'search_text': search_text
+            },
+            success: function(data) {
+                // Clear previous results
+                $('#results_container').empty();
+                $('#response_time_container').empty();
+
+                // Display response time
+                // var responseTimeHtml = `<p><strong>Response Time:</strong> ${data.response_time} seconds</p>`;
+                // $('#response_time_container').append(responseTimeHtml);
+
+                // Insert new results
+                data.papers_data.forEach(function(paper) {
+                    // Construct HTML for each paper detail
+                    var paperHtml = `
+                        <div class="paper-item">
+                            <h3 style="margin-left:1%">${paper.title}</h3>
+                            <p><strong>Year:</strong> ${paper.year}</p>
+                            <p><strong>Author:</strong> ${paper.author}</p>
+                            <p><strong>Publication:</strong> ${paper.publication}</p>
+                            <p><strong>Impact Factor:</strong> ${paper.impact_factor}</p>
+                            <p><strong>Responce Time:</strong>Approx ${paper.responce_time} weeks</p>
+                            <p><strong>URL:</strong> <a href="${paper.url}" target="_blank">${paper.url}</a></p>
+                             <hr style="border: 2px solid black;width:40%">
+                        </div>
+                    `;
+
+                    // Append each paper HTML to results container
+                    $('#results_container').append(paperHtml);
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
+    });
+});
+</script>
+
+{% endblock content %}

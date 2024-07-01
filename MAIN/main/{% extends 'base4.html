@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block content %}
+      
+<!--logout-->
+<div class="logout">
+   <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+</div>
+<div class="wrapper">
+   <div class="title">
+     Account 
+   </div>
+   <div class="form-container">
+     <div class="slide-controls">
+       <input type="radio" name="slide" id="login" checked>
+       <input type="radio" name="slide" id="signup">
+       <label for="login" class="slide login">Login</label>
+       <label for="signup" class="slide signup">SignUp</label>
+       <div class="slider-tab"></div>
+     </div>
+     <div class="form-inner">
+       <form action="{% url 'login' %}" method="post" class="login">
+         {% csrf_token %}
+         <div class="field">
+           <input type="text" name="email" placeholder="Email Address" required>
+         </div>
+         <div class="field">
+           <input type="password" name="password" placeholder="Password" required>
+         </div>
+         <div class="pass-link">
+           <a href="#">forgot password?</a>
+         </div>
+         <div class="buttn">
+           <button type="submit">Login</button>
+         </div>
+         <div class="signup-link">
+           Don't Have Account? <a href="#">Create account</a>
+         </div>
+       </form>
+ 
+       <form action="{% url 'signup' %}" method="post" class="signup">
+         {% csrf_token %}
+         <div class="field">
+           <input type="text" name="email" placeholder="Email Address" required>
+         </div>
+         <div class="field">
+           <input type="password" name="password1" placeholder="Password" required>
+         </div>
+         <div class="field">
+           <input type="password" name="password2" placeholder="Confirm Password" required>
+         </div>
+         <div class="buttn">
+           <button type="submit">SignUp</button>
+         </div>
+       </form>
+     </div>
+   </div>
+</div>
+
+<script>
+  const loginRadio = document.getElementById('login');
+  const signupRadio = document.getElementById('signup');
+  const formInner = document.querySelector('.form-inner');
+  const loginForm = document.querySelector('.login');
+  const signupForm = document.querySelector('.signup');
+  const sliderTab = document.querySelector('.slider-tab');
+
+  loginRadio.addEventListener('change', () => {
+    formInner.style.transform = 'translateX(0%)';
+    sliderTab.style.left = '0';
+  });
+
+  signupRadio.addEventListener('change', () => {
+    formInner.style.transform = 'translateX(-100%)';
+    sliderTab.style.left = '50%';
+  });
+</script>
+
+<style>
+  .form-inner {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+  }
+  .form-inner form {
+    min-width: 100%;
+  }
+  .slider-tab {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    transition: left 0.3s ease-in-out;
+  }
+</style>
+
+{% endblock content %}

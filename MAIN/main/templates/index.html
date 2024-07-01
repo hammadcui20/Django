@@ -1,0 +1,171 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+
+<!--Home section-->
+    <section class="home" id="home">
+        <div class="content">
+            <h3>Journal recommendation system</h3>
+            <p>suggests journals based on user preferences</p>
+            <a href="about" class="btn">discover more</a>
+        </div>
+
+        <div class="image-container">
+            <img src="{{ MEDIA_URL }}abb.jpg" id="image-slider" alt="Image Slider">
+        </div>
+    </section>
+
+   <!--counter--> 
+    <div class="row">
+        <div class="column">
+          <div class="card">
+            <p><i class="fa fa-user"></i></p>
+            <h3>11+</h3>
+            <p>Partners</p>
+          </div>
+        </div>
+      
+        <div class="column">
+          <div class="card">
+            <p><i class="fa fa-check"></i></p>
+            <h3>55+</h3>
+            <p>Jounals</p>
+          </div>
+        </div>
+        
+        <div class="column">
+          <div class="card">
+            <p><i class="fa fa-smile"></i></p>
+            <h3>100+</h3>
+            <p>Happy Clients</p>
+          </div>
+        </div>
+        
+        <div class="column">
+          <div class="card">
+            <p><i class="fa fa-coffee"></i></p>
+            <h3>100+</h3>
+            <p>Meetings</p>
+          </div>
+        </div>
+      </div>
+      
+      
+<!--about-->
+<section class="about">
+    <h1 class="heading">
+        <span class="about">a</span>
+        <span class="about">b</span>
+        <span class="about">o</span>
+        <span class="about">u</span>
+        <span class="about">t</span>
+        <span class="about space"></span>
+        <span class="about">u</span>
+        <span class="about">s</span>
+    </h1>
+
+    <div class="about-us">
+      
+      <div class="text">
+        <p>Welcome to the Journal Recommendation System, where we strive to make scholarly exploration effortless and productive. Our platform is
+             meticulously crafted to cater to the diverse needs of researchers seeking relevant academic journals. Powered by cutting-edge 
+             algorithms, we delve into your preferences and reading history to curate personalized recommendations tailored specifically to your 
+             interests. Whether you're delving into the depths of quantum mechanics or exploring the intricacies of ancient history, our system is
+              here to streamline your research journey. Say goodbye to endless searching and hello to a world of tailored knowledge discovery. 
+              Join us and unlock the potential of efficient scholarly exploration today!</p>
+        <a href="../HTML/about.html" class="btn">read more</a>
+      </div>
+      <img src="{{ MEDIA_URL }}about us.jpeg" class="pic">
+    </div>
+
+  </section>
+
+<!--Features-->
+<section class="facilities">
+    <h1 class="heading">
+        <span>f</span>
+        <span>e</span>
+        <span>a</span>
+        <span>t</span>
+        <span>u</span>
+        <span>r</span>
+        <span>e</span>
+        <span>s</span>
+    </h1>
+
+    <div class="row">
+        <div class="facilities-col">
+            <img src="{{ MEDIA_URL }}1.jpeg">
+            <h3>Personalized Recommendations</h3>
+            <p>Our platform offers personalized recommendations based on your research interests and reading habits. By analyzing your preferences,
+                 we provide targeted suggestions for scholarly journals, enhancing your research journey with relevant publications.</p>
+        </div>
+        <div class="facilities-col">
+            <img src="{{ MEDIA_URL }}2.jpeg">
+            <h3>Comprehensive Journal Database</h3>
+            <p>Access high-quality scholarly publications from our extensive database covering diverse disciplines. Our curated collection ensures
+                 comprehensive coverage, facilitating in-depth investigation and scholarly inquiry across various domains.</p>
+        </div>
+        <div class="facilities-col">
+            <img src="{{ MEDIA_URL }}3.jpeg">
+            <h3>Advanced Search Capabilities</h3>
+            <p>Streamline your research process with our advanced search tools. Quickly find specific journals or topics using intuitive filters 
+                such as keywords, authors, and publication dates, empowering you to navigate scholarly literature efficiently.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!--Testimonial-->
+<section class="testimonial">
+    <h1 class="heading">
+        <span>t</span>
+        <span>e</span>
+        <span>s</span>
+        <span>t</span>
+        <span>i</span>
+        <span>m</span>
+        <span>o</span>
+        <span>n</span>
+        <span>i</span>
+        <span>a</span>
+        <span>l</span>
+    </h1>
+
+    <div class="row">
+        <div class="testimonial-col">
+            <img src="{{ MEDIA_URL }}file.jpg" alt="file">
+        <div>
+        <p>I've been using this journal recommendation website for a while now, and it's been a game-changer for my research. The personalized 
+            recommendations have saved me countless hours of sifting through irrelevant articles, allowing me to focus on the most relevant 
+            publications in my field. </p>
+            <h3>Junaid Ahmed</h3>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+        </div>
+        </div>
+
+            <div class="testimonial-col">
+                <img src="{{ MEDIA_URL }}test2.jpg">
+            <div>
+            <p>As an early-career researcher, finding the right journals to publish in can be overwhelming. Thanks to this platform's 
+                comprehensive database and advanced search capabilities, I've been able to discover reputable journals that align perfectly with 
+                my research interests. </p>
+                <h3>Muhammad Daniyal</h3>
+                <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half"></i>
+    </div>
+            </div>
+    </div>
+</section>
+
+{% endblock content%}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+            <section class="about">
+                <div class="contain">
+                    <div class="heading">
+                        <h1>About Us</h1>
+                        <p>Discovering the best journals for your research</p>
+                    </div>
+                    <div class="about-content">
+                        <div class="about-image">
+                            <img src="{{ MEDIA_URL }}about us.jpeg" alt="About Us Image">
+                        </div>
+                        <div class="about-text">
+                            <h2>Our Mission</h2>
+                            <p>We are dedicated to helping researchers find the most relevant and impactful journals for their work. Our platform utilizes advanced algorithms and expert curation to provide personalized recommendations tailored to each user's needs.</p>
+                            <h2>Why Choose Us?</h2>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Comprehensive database of journals</li>
+                                <li><i class="fas fa-check"></i> Personalized recommendations</li>
+                                <li><i class="fas fa-check"></i> User-friendly interface</li>
+                                <li><i class="fas fa-check"></i> Timely updates on new publications</li>
+                                <li><i class="fas fa-check"></i> Dedicated customer support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+{% endblock content%}

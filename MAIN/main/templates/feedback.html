@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="wrapper"> 
+  <div class="title">Rate your experience</div>
+  <div class="content">We highly value your feedback! Kindly take a moment to rate your experience and provide us with your valuable feedback.</div>
+  <div class="rate">
+    <input type="radio" id="star5" name="rate" value="5" />
+    <label for="star5" title="text">5 stars</label>
+    <input type="radio" id="star4" name="rate" value="4" />
+    <label for="star4" title="text">4 stars</label>
+    <input type="radio" id="star3" name="rate" value="3" />
+    <label for="star3" title="text">3 stars</label>
+    <input type="radio" id="star2" name="rate" value="2" />
+    <label for="star2" title="text">2 stars</label>
+    <input type="radio" id="star1" name="rate" value="1" />
+    <label for="star1" title="text">1 star</label>
+  </div>
+  <textarea id="feedback-message" cols="30" rows="6" placeholder="Tell us about your experience!"></textarea>
+  <div class="submit-btn" onclick="alert('Thank you for your feedback!')" onclick="submitFeedback()">Send</div>
+</div>
+
+<script>
+  document.getElementById('feedback-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Get the feedback message from the form
+      var message = document.getElementById('feedback-message').value;
+
+      // Send feedback data to the server using AJAX
+      fetch('/feedback/', {  // Change submit_feedback to feedback
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': '{{ csrf_token }}'
+          },
+          body: JSON.stringify({ message: message })
+      })
+      .then(response => {
+          if (response.ok) {
+              alert('Thank you for your feedback!');
+          } else {
+              alert('Failed to submit feedback. Please try again later.');
+          }
+      })
+      .catch(error => {
+          console.error('Error submitting feedback:', error);
+          alert('An error occurred while submitting feedback. Please try again later.');
+      });
+  });
+</script>
+
+
+{% endblock content %}
